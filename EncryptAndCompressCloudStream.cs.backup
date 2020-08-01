@@ -1,0 +1,19 @@
+namespace pattern_decorator
+{
+    public class EncryptAndCompressCloudStream : CloudStream
+    {
+        public override void Write(string data) {
+            var encrypted = Encrypt(data);
+            var compressed = Compress(encrypted);
+            base.Write(compressed);
+        }
+
+         private string Compress(string data) {
+            return data.Substring(0,5);
+        }
+
+           private string Encrypt(string data) {
+            return "#@$%#%$%^%$^%^%";
+        }
+    }
+}
